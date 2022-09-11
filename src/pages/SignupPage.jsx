@@ -1,28 +1,32 @@
-import Container from '../components/Container';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { authOperations } from 'redux/auth';
+import Container from 'components/Container';
 import s from './PageStyles.module.css';
 
 const SignupPage = () => {
-  const [login, setLogin] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleChange = event => {
-    const { value, name } = event.currentTarget;
+  const dispatch = useDispatch();
 
-    if (name === 'login') setLogin(value);
+  const handleChange = event => {
+    const { name, value } = event.target;
+
+    if (name === 'name') setName(value);
     if (name === 'email') setEmail(value);
     if (name === 'password') setPassword(value);
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-
+    dispatch(authOperations.register({ name, email, password }));
     reset();
   };
 
   const reset = () => {
-    setLogin('');
+    setName('');
     setEmail('');
     setPassword('');
   };
@@ -31,15 +35,15 @@ const SignupPage = () => {
     <>
       <Container>
         <h3 className={s.pageTitle}>SignUp Page!</h3>
-        <form className={s.form} onSubmit={handleSubmit}>
+        <form className={s.form} onSubmit={handleSubmit} autoComplete="off">
           <label className={s.label}>
-            Login
+            Name
             <input
               className={s.input}
               type="text"
-              name="login"
-              placeholder="Enter login"
-              value={login}
+              name="name"
+              placeholder="Enter name"
+              value={name}
               required
               onChange={handleChange}
             />

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import s from './Contact.module.css';
 import toast from 'react-hot-toast';
 
-import { useDeleteContactMutation } from '../../redux/contactsSlice';
+import { useDeleteContactMutation } from '../../services/contactsApi';
 
 const Contact = ({ name, number, id }) => {
   const [deleteContact, { isLoading }] = useDeleteContactMutation();

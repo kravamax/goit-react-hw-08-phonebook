@@ -4,7 +4,7 @@ const HomePage = () => {
   return (
     <>
       <Container>
-        <h1>Home page! Hello!!!</h1>
+        <h1 style={{ fontSize: '50px' }}>Welcome to home page! 👋</h1>
       </Container>
     </>
   );

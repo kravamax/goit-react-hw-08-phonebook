@@ -1,10 +1,14 @@
-import Container from '../components/Container';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { authOperations } from 'redux/auth';
+import Container from 'components/Container';
 import s from './PageStyles.module.css';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   const handleChange = event => {
     const { value, name } = event.currentTarget;
@@ -15,7 +19,7 @@ const LoginPage = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-
+    dispatch(authOperations.logIn({ email, password }));
     reset();
   };
 
@@ -28,7 +32,7 @@ const LoginPage = () => {
     <>
       <Container>
         <h3 className={s.pageTitle}>Login Page!</h3>
-        <form className={s.form} onSubmit={handleSubmit}>
+        <form className={s.form} onSubmit={handleSubmit} autoComplete="off">
           <label className={s.label}>
             Email
             <input

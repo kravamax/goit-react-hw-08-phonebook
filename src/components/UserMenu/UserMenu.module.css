@@ -2,3 +2,27 @@
   display: flex;
   gap: 10px;
 }
+
+.button {
+  width: 100%;
+  padding: 0;
+
+  color: #ffffff;
+  background-color: #3f62f1;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  border-radius: 20px;
+  border: none;
+
+  cursor: pointer;
+  transition: background-color 250ms linear;
+}
+
+.button:hover {
+  background-color: #546fda;
+}
+
+.greeting {
+  font-weight: 500;
+}

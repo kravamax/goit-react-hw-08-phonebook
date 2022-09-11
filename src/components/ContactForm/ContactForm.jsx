@@ -1,18 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import {
+  useGetContactsQuery,
+  useAddContactMutation,
+} from 'services/contactsApi';
 import s from './ContactForm.module.css';
 import toast from 'react-hot-toast';
-
-import {
-  useAddContactMutation,
-  useGetContactsQuery,
-} from '../../redux/contactsSlice';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const [addContact] = useAddContactMutation();
+  const [addContact, { isSuccess }] = useAddContactMutation();
   const { data: contacts } = useGetContactsQuery();
+
+  useEffect(() => {
+    if (isSuccess) {
+      setName('');
+      setNumber('');
+    }
+  }, [isSuccess]);
 
   const handleChange = event => {
     const { value, name } = event.currentTarget;
