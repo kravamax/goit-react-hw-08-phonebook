@@ -1,20 +1,24 @@
-import ContactForm from './ContactForm';
-import Filter from './Filter';
-import ContactList from './ContactList';
-import Container from './Container';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+
+import HomePage from '../pages/HomePage';
+import ContactsPage from '../pages/ContactsPage';
+import LoginPage from '../pages/LoginPage';
+import SignupPage from '../pages/SignupPage';
+import NavBar from './NavBar/NavBar';
 
 const App = () => {
   return (
     <>
-      <Container>
-        <h1>Phonebook</h1>
-        <ContactForm />
-
-        <h2>Contacts</h2>
-        <Filter />
-        <ContactList />
-      </Container>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="contacts" element={<ContactsPage />}></Route>
+          <Route path="login" element={<LoginPage />}></Route>
+          <Route path="register" element={<SignupPage />}></Route>
+        </Routes>
+      </BrowserRouter>
       <Toaster />
     </>
   );
