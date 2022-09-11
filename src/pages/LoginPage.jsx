@@ -27,7 +27,7 @@ const LoginPage = () => {
   return (
     <>
       <Container>
-        <h3>Login Page!</h3>
+        <h3 className={s.pageTitle}>Login Page!</h3>
         <form className={s.form} onSubmit={handleSubmit}>
           <label className={s.label}>
             Email

@@ -52,3 +52,7 @@
 .button:hover {
   background-color: #546fda;
 }
+
+.pageTitle {
+  color: #fff;
+}

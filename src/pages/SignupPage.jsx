@@ -30,7 +30,7 @@ const SignupPage = () => {
   return (
     <>
       <Container>
-        <h3>SignUp Page!</h3>
+        <h3 className={s.pageTitle}>SignUp Page!</h3>
         <form className={s.form} onSubmit={handleSubmit}>
           <label className={s.label}>
             Login
